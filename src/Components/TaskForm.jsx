@@ -3,7 +3,7 @@ import React from 'react'
 const TaskForm = () => {
     return (
         <>
-            <div className="container w-[50%] border border-white rounded-lg  py-8 px-4 shadow-sm shadow-amber-50">
+            <div className="container   border border-white rounded-lg  py-8 px-4 shadow-sm shadow-amber-50">
                 <form className='flex item-center flex-col gap-8 '>
                     <input className='outline-none border border-amber-50 rounded-lg px-4 py-4' type="text" placeholder="Task Title" />
                     <select className='outline-none border border-amber-50 rounded-lg px-4 py-4'>
