@@ -1,18 +1,33 @@
-import React from 'react'
+import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Header from './Components/Header'
 import TaskForm from './Components/TaskForm'
-import './App.css'
 import TaskList from './Components/TaskList'
 
 function App() {
+  const [tasks, setTasks] = useState([])
+
+  const addTask = (taskData) => {
+    const newTask = { ...taskData, id: Date.now(), completed: false };
+    setTasks([...tasks, newTask]);
+  };
+
+  const toggleComplete = (id) => {
+    setTasks(tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task));
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
 
   return (
     <>
-      <div className="section flex items-center justify-center h-screen w-full max-w-fit m-auto">
-        <div className="parent flex h-176 overflow-hidden  items-center justify-between max-w-7xl m-auto gap-12 ">
-          <TaskForm />
-          <TaskList />
-        </div>
-      </div>
+      <Header hasTasks={tasks.length > 0} />
+
+      <Routes>
+        <Route path="/" element={<TaskForm addTask={addTask} />} />
+        <Route path="/tasks" element={<TaskList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask} />} />
+      </Routes>
     </>
   )
 }
