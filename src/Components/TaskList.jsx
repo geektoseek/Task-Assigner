@@ -12,7 +12,7 @@ function TaskList({ tasks, toggleComplete, deleteTask }) {
                                 <h4 className="text-white font-semibold text-lg">{task.title}</h4>
                                 <p className="text-gray-400 text-sm mt-1">{task.description}</p>
                                 <div className="flex gap-4 mt-2 text-sm">
-                                    <span className="text-amber-400">Priority: {task.priority}</span>
+                                    <span className="text-white bg-red-500 rounded-lg py-1 px-2">Priority: {task.priority}</span>
                                     <span className="text-gray-400">Due: {task.dueDate}</span>
                                 </div>
                                 <div className="flex gap-2 mt-3">
