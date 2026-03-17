@@ -21,14 +21,22 @@ function App() {
   };
 
   return (
-    <>
-      <Header hasTasks={tasks.length > 0} />
-
+    <div className="min-h-screen bg-gray-950 text-white">
       <Routes>
-        <Route path="/" element={<TaskForm addTask={addTask} />} />
-        <Route path="/tasks" element={<TaskList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask} />} />
+        <Route path="/" element={
+          <>
+            <Header hasTasks={tasks.length > 0} isFormPage={true} />
+            <TaskForm addTask={addTask} />
+          </>
+        } />
+        <Route path="/tasks" element={
+          <>
+            <Header hasTasks={tasks.length > 0} isFormPage={false} />
+            <TaskList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask} />
+          </>
+        } />
       </Routes>
-    </>
+    </div>
   )
 }
 

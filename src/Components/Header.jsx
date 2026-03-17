@@ -1,9 +1,6 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-function Header({ hasTasks }) {
-    const location = useLocation()
-    const isFormPage = location.pathname === "/"
-
+function Header({ hasTasks, isFormPage }) {
     return (
         <header className='flex items-center justify-between px-12 py-6 border-b border-white'>
             <Link to="/" className='text-xl font-bold'>Task Manager</Link>
@@ -18,6 +15,7 @@ function Header({ hasTasks }) {
                         Add New Task
                     </Link>
                 )}
+
                 {hasTasks ? (
                     <Link to="/tasks" className='bg-amber-600 px-6 py-2 rounded-lg text-black font-medium'>
                         View Tasks
